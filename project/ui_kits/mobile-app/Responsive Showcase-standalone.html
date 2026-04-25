@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Magna Via — Responsive Showcase</title>
+
+<template id="__bundler_thumbnail" data-bg-color="#0a0a14">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="g" cx="50%" cy="50%" r="60%">
+        <stop offset="0%" stop-color="#2a1a44"/>
+        <stop offset="100%" stop-color="#0a0a14"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#g)"/>
+    <g fill="#c8a030" opacity="0.9">
+      <circle cx="600" cy="320" r="4"/>
+      <circle cx="540" cy="380" r="2"/>
+      <circle cx="660" cy="380" r="2"/>
+      <circle cx="480" cy="300" r="2"/>
+      <circle cx="720" cy="300" r="2"/>
+      <path d="M600 260 L612 304 L656 304 L620 332 L632 376 L600 348 L568 376 L580 332 L544 304 L588 304 Z"/>
+    </g>
+    <text x="600" y="480" text-anchor="middle"
+          font-family="serif" font-size="54" font-weight="700"
+          fill="#e8e0d0" letter-spacing="8">MAGNA VIA</text>
+    <text x="600" y="530" text-anchor="middle"
+          font-family="serif" font-size="22" font-style="italic"
+          fill="#a090d0" letter-spacing="2">Responsive Showcase</text>
+  </svg>
+</template>
+
+<meta name="ext-resource-dependency" content="compressed/hobbies_artist.jpg" data-resource-id="r_hobbies_artist_png" />
+<meta name="ext-resource-dependency" content="compressed/hobbies_fighter.jpg" data-resource-id="r_hobbies_fighter_png" />
+<meta name="ext-resource-dependency" content="compressed/hobbies_guardians-lantern.jpg" data-resource-id="r_hobbies_guardians_lantern_png" />
+<meta name="ext-resource-dependency" content="compressed/hobbies_keepers-codex.jpg" data-resource-id="r_hobbies_keepers_codex_png" />
+<meta name="ext-resource-dependency" content="compressed/hobbies_leaders-crown.jpg" data-resource-id="r_hobbies_leaders_crown_png" />
+<meta name="ext-resource-dependency" content="compressed/hobbies_scholar.jpg" data-resource-id="r_hobbies_scholar_png" />
+<meta name="ext-resource-dependency" content="compressed/birth-stars_aqua.jpg" data-resource-id="r_birth_stars_aqua_png" />
+<meta name="ext-resource-dependency" content="compressed/birth-stars_ignis.jpg" data-resource-id="r_birth_stars_ignis_png" />
+<meta name="ext-resource-dependency" content="compressed/birth-stars_terra.jpg" data-resource-id="r_birth_stars_terra_png" />
+<meta name="ext-resource-dependency" content="compressed/birth-stars_ventus.jpg" data-resource-id="r_birth_stars_ventus_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_1.jpg" data-resource-id="r_questions_1_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_2.jpg" data-resource-id="r_questions_2_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_3.jpg" data-resource-id="r_questions_3_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_4.jpg" data-resource-id="r_questions_4_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_5.jpg" data-resource-id="r_questions_5_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_6.jpg" data-resource-id="r_questions_6_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_7.jpg" data-resource-id="r_questions_7_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_8.jpg" data-resource-id="r_questions_8_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_9.jpg" data-resource-id="r_questions_9_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_10.jpg" data-resource-id="r_questions_10_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_11.jpg" data-resource-id="r_questions_11_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_12.jpg" data-resource-id="r_questions_12_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_13.jpg" data-resource-id="r_questions_13_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_14.jpg" data-resource-id="r_questions_14_png" />
+<meta name="ext-resource-dependency" content="compressed/questions_15.jpg" data-resource-id="r_questions_15_png" />
+<meta name="ext-resource-dependency" content="compressed/characters_cenayang-portrait.png" data-resource-id="r_characters_cenayang_portrait_png" />
+<meta name="ext-resource-dependency" content="compressed/characters_cenayang-avatar.png" data-resource-id="r_characters_cenayang_avatar_png" />
+<meta name="ext-resource-dependency" content="compressed/classes_the-knight.jpg" data-resource-id="r_classes_the_knight_png" />
+<meta name="ext-resource-dependency" content="compressed/backgrounds_arcadia-splash.jpg" data-resource-id="r_backgrounds_arcadia_splash_png" />
+<meta name="ext-resource-dependency" content="compressed/logos_magna-via-logo-dark.svg" data-resource-id="r_logos_magna_via_logo_dark_svg" />
+
+<link rel="stylesheet" href="../../colors_and_type.css">
+
+<script>
+// Build asset-path → blob URL map, then install a MutationObserver that
+// rewrites any src or inline background[-image] referencing ../../assets/...
+// to the bundled blob URL at render time.
+(function () {
+  const R = window.__resources || {};
+  const MAP = {
+    "../../assets/hobbies/artist.png": R.r_hobbies_artist_png,
+    "../../assets/hobbies/fighter.png": R.r_hobbies_fighter_png,
+    "../../assets/hobbies/guardians-lantern.png": R.r_hobbies_guardians_lantern_png,
+    "../../assets/hobbies/keepers-codex.png": R.r_hobbies_keepers_codex_png,
+    "../../assets/hobbies/leaders-crown.png": R.r_hobbies_leaders_crown_png,
+    "../../assets/hobbies/scholar.png": R.r_hobbies_scholar_png,
+    "../../assets/birth-stars/aqua.png": R.r_birth_stars_aqua_png,
+    "../../assets/birth-stars/ignis.png": R.r_birth_stars_ignis_png,
+    "../../assets/birth-stars/terra.png": R.r_birth_stars_terra_png,
+    "../../assets/birth-stars/ventus.png": R.r_birth_stars_ventus_png,
+    "../../assets/questions/1.png": R.r_questions_1_png,
+    "../../assets/questions/2.png": R.r_questions_2_png,
+    "../../assets/questions/3.png": R.r_questions_3_png,
+    "../../assets/questions/4.png": R.r_questions_4_png,
+    "../../assets/questions/5.png": R.r_questions_5_png,
+    "../../assets/questions/6.png": R.r_questions_6_png,
+    "../../assets/questions/7.png": R.r_questions_7_png,
+    "../../assets/questions/8.png": R.r_questions_8_png,
+    "../../assets/questions/9.png": R.r_questions_9_png,
+    "../../assets/questions/10.png": R.r_questions_10_png,
+    "../../assets/questions/11.png": R.r_questions_11_png,
+    "../../assets/questions/12.png": R.r_questions_12_png,
+    "../../assets/questions/13.png": R.r_questions_13_png,
+    "../../assets/questions/14.png": R.r_questions_14_png,
+    "../../assets/questions/15.png": R.r_questions_15_png,
+    "../../assets/characters/cenayang-portrait.png": R.r_characters_cenayang_portrait_png,
+    "../../assets/characters/cenayang-avatar.png": R.r_characters_cenayang_avatar_png,
+    "../../assets/classes/the-knight.png": R.r_classes_the_knight_png,
+    "../../assets/backgrounds/arcadia-splash.png": R.r_backgrounds_arcadia_splash_png,
+    "../../assets/logos/magna-via-logo-dark.svg": R.r_logos_magna_via_logo_dark_svg,
+  };
+  window.__R = MAP;
+
+  function rewrite(str) {
+    if (!str) return str;
+    // Replace any `../../assets/foo/bar.ext` occurrence in the string.
+    return str.replace(/\.\.\/\.\.\/assets\/[a-zA-Z0-9._\-\/]+/g, (m) => MAP[m] || m);
+  }
+
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    // <img src>
+    if (node.tagName === 'IMG') {
+      const s = node.getAttribute('src');
+      if (s && s.indexOf('../../assets/') !== -1) {
+        const repl = rewrite(s);
+        if (repl !== s) node.setAttribute('src', repl);
+      }
+    }
+    // Inline style with url(...)
+    const st = node.getAttribute && node.getAttribute('style');
+    if (st && st.indexOf('../../assets/') !== -1) {
+      const repl = rewrite(st);
+      if (repl !== st) node.setAttribute('style', repl);
+    }
+  }
+
+  function scanAll(root) {
+    scan(root);
+    if (root.querySelectorAll) {
+      const all = root.querySelectorAll('img, [style]');
+      for (let i = 0; i < all.length; i++) scan(all[i]);
+    }
+  }
+
+  const obs = new MutationObserver((muts) => {
+    for (const m of muts) {
+      if (m.type === 'childList') {
+        m.addedNodes.forEach((n) => scanAll(n));
+      } else if (m.type === 'attributes') {
+        scan(m.target);
+      }
+    }
+  });
+
+  function start() {
+    scanAll(document.body);
+    obs.observe(document.body, {
+      childList: true, subtree: true,
+      attributes: true, attributeFilter: ['src', 'style'],
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0a0a14; font-family: 'Nunito', sans-serif; color: #e8e0d0; min-height: 100vh; }
+  button { font-family: inherit; }
+  #root { min-height: 100vh; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Existing mobile screens (for phone artboard) -->
+<script type="text/babel" src="PhoneFrame.jsx"></script>
+<script type="text/babel" src="Primitives.jsx"></script>
+<script type="text/babel" src="ScreenTransitions.jsx"></script>
+<script type="text/babel" src="Splash.jsx"></script>
+<script type="text/babel" src="OracleIntro.jsx"></script>
+<script type="text/babel" src="Biodata.jsx"></script>
+<script type="text/babel" src="BirthStarSelect.jsx"></script>
+<script type="text/babel" src="HobbyCards.jsx"></script>
+<script type="text/babel" src="QuizScenario.jsx"></script>
+<script type="text/babel" src="ResultReveal.jsx"></script>
+<script type="text/babel" src="ClassResult.jsx"></script>
+<script type="text/babel" src="CenayangChat.jsx"></script>
+
+<!-- Shared -->
+<script type="text/babel" src="ChatBubble.jsx"></script>
+
+<!-- New native tablet + desktop layouts -->
+<script type="text/babel" src="TabletScreens.jsx"></script>
+<script type="text/babel" src="TabletScreensExtra.jsx"></script>
+<script type="text/babel" src="DesktopScreens.jsx"></script>
+<script type="text/babel" src="DesktopScreensExtra.jsx"></script>
+
+<!-- Design canvas shell -->
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+// ── Shared screen picker state ──
+const SCREENS = [
+  { id: 'splash',  label: 'Splash' },
+  { id: 'oracle',  label: 'Oracle' },
+  { id: 'biodata', label: 'Biodata' },
+  { id: 'stars',   label: 'Birth Star' },
+  { id: 'hobbies', label: 'Hobby Cards' },
+  { id: 'quiz',    label: 'Quiz' },
+  { id: 'result',  label: 'Class Result' },
+  { id: 'chat',    label: 'Cenayang Chat' },
+];
+
+function ScreenTabs({ value, onChange }) {
+  return (
+    <div style={{
+      display: 'inline-flex', gap: 4, padding: 4, borderRadius: 999,
+      background: 'rgba(20,20,30,0.8)', border: '0.5px solid #2a2a40',
+      marginBottom: 16,
+    }}>
+      {SCREENS.map(s => {
+        const active = s.id === value;
+        return (
+          <button key={s.id} onClick={() => onChange(s.id)} style={{
+            padding: '8px 16px', borderRadius: 999, border: 'none', cursor: 'pointer',
+            background: active ? 'rgba(200,160,48,0.18)' : 'transparent',
+            color: active ? '#e8d090' : '#887870',
+            fontFamily: "'Cinzel', serif", fontSize: 10, fontWeight: 700,
+            letterSpacing: '0.18em', textTransform: 'uppercase',
+            boxShadow: active ? '0 0 12px rgba(200,160,48,0.3)' : 'none',
+          }}>{s.label}</button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── Phone artboard: existing mobile-app, scaled to match phone frame ──
+function PhoneArtboardContent({ screen }) {
+  const [localScreen, setLocalScreen] = React.useState(screen);
+  React.useEffect(() => { setLocalScreen(screen); }, [screen]);
+
+  const screens = {
+    splash:  <Splash onBegin={() => {}} />,
+    oracle:  <OracleIntro onBack={() => {}} onAdvance={() => {}} />,
+    biodata: <Biodata onBack={() => {}} onAdvance={() => {}} />,
+    stars:   <BirthStarSelect onBack={() => {}} onAdvance={() => {}} />,
+    hobbies: <HobbyCards onBack={() => {}} onAdvance={() => {}} />,
+    quiz:    <QuizScenario onBack={() => {}} onAdvance={() => {}} />,
+    result:  <ClassResult onBack={() => {}} onConsult={() => {}} onRestart={() => {}} />,
+    chat:    <CenayangChat onBack={() => {}} />,
+  };
+  return (
+    <div style={{
+      width: 395, height: 832,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: 'transparent',
+    }}>
+      <PhoneFrame>{screens[localScreen]}</PhoneFrame>
+    </div>
+  );
+}
+
+// ── Tablet artboard ──
+function TabletArtboardContent({ screen }) {
+  switch (screen) {
+    case 'splash':  return <TabletSplash onBegin={() => {}} />;
+    case 'oracle':  return <TabletOracle onBack={() => {}} onAdvance={() => {}} />;
+    case 'biodata': return <TabletBiodata onBack={() => {}} onAdvance={() => {}} />;
+    case 'hobbies': return <TabletHobbyCards onBack={() => {}} onAdvance={() => {}} />;
+    case 'quiz':    return <TabletQuiz onBack={() => {}} onAdvance={() => {}} />;
+    case 'result':  return <TabletClassResult onBack={() => {}} onConsult={() => {}} onRestart={() => {}} />;
+    case 'chat':    return <TabletChat onBack={() => {}} />;
+    default:        return <TabletBirthStar onBack={() => {}} onAdvance={() => {}} />;
+  }
+}
+
+// ── Desktop artboard ──
+function DesktopArtboardContent({ screen }) {
+  switch (screen) {
+    case 'splash':  return <DesktopSplash onBegin={() => {}} />;
+    case 'oracle':  return <DesktopOracle onBack={() => {}} onAdvance={() => {}} />;
+    case 'biodata': return <DesktopBiodata onBack={() => {}} onAdvance={() => {}} />;
+    case 'hobbies': return <DesktopHobbyCards onBack={() => {}} onAdvance={() => {}} />;
+    case 'quiz':    return <DesktopQuiz onBack={() => {}} onAdvance={() => {}} />;
+    case 'result':  return <DesktopClassResult onBack={() => {}} onConsult={() => {}} onRestart={() => {}} />;
+    case 'chat':    return <DesktopChat onBack={() => {}} />;
+    default:        return <DesktopBirthStar onBack={() => {}} onAdvance={() => {}} />;
+  }
+}
+
+function ShowcaseApp() {
+  const [screen, setScreen] = React.useState('stars');
+
+  return (
+    <div>
+      {/* Header + screen picker — sits ABOVE the canvas, full width */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+        padding: '16px 24px 12px',
+        background: 'linear-gradient(to bottom, rgba(10,10,20,0.96), rgba(10,10,20,0.85))',
+        borderBottom: '0.5px solid #2a2a40',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        backdropFilter: 'blur(10px)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div style={{
+            fontFamily: "'Cinzel', serif", fontWeight: 700, color: '#c8a030',
+            letterSpacing: '0.4em', textTransform: 'uppercase', fontSize: 13,
+            textShadow: '0 0 14px rgba(200,160,48,0.3)',
+          }}>✦ Magna Via</div>
+          <span style={{
+            fontFamily: "'Nunito', sans-serif", fontSize: 10, fontWeight: 700,
+            color: '#555065', letterSpacing: '0.2em', textTransform: 'uppercase',
+            padding: '5px 10px', border: '0.5px solid #2a2a40', borderRadius: 999,
+          }}>Responsive Showcase — 3 Breakpoints</span>
+        </div>
+        <ScreenTabs value={screen} onChange={setScreen} />
+        <div style={{
+          fontFamily: "'Nunito', sans-serif", fontSize: 10, fontWeight: 600,
+          color: '#887870', letterSpacing: '0.18em', textTransform: 'uppercase',
+        }}>Scroll · Pinch to zoom · Click ⤢ to focus</div>
+      </div>
+
+      <div style={{ paddingTop: 56 }}>
+        <DesignCanvas>
+          <DCSection id="breakpoints" title="Magna Via — All Breakpoints"
+                     subtitle="Mobile (existing) · Tablet (new native layout) · Desktop (new native layout). Switch screen with the tabs up top.">
+            <DCArtboard id="phone" label="📱 Mobile · 375 × 812 (iPhone 14)"
+                        width={395} height={832}>
+              <PhoneArtboardContent screen={screen} />
+            </DCArtboard>
+            <DCArtboard id="tablet" label="📲 Tablet · 1024 × 1366 (iPad Pro portrait)"
+                        width={1024} height={1366}>
+              <TabletArtboardContent screen={screen} />
+            </DCArtboard>
+            <DCArtboard id="desktop" label="🖥  Desktop · 1440 × 900 (Web app)"
+                        width={1440} height={900}>
+              <DesktopArtboardContent screen={screen} />
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<ShowcaseApp />);
+</script>
+</body>
+</html>

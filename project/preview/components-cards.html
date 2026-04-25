@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Magna Via · Cards</title>
+<style>/* mv-responsive */
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{overflow-x:hidden;}
+  img,svg{max-width:100%;height:auto;}
+
+  html,body{margin:0;background:#0a0a14;color:#e8e0d0;font-family:'Nunito';}
+  .wrap{padding:22px;display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:14px;}
+  .card{background:#1e1e30;border:0.5px solid #2a2a40;border-radius:12px;padding:16px;position:relative;overflow:hidden;}
+  .selected{border-color:#c8a030;box-shadow:0 0 20px rgba(200,160,48,.25);}
+  .oracle{background:linear-gradient(135deg,#1e1e30 0%,#241a3e 100%);border-color:#3a2a60;box-shadow:0 0 24px rgba(90,58,138,.35);}
+  h3{margin:0;font-family:'Cinzel';font-weight:600;font-size:17px;color:#e8e0d0;letter-spacing:0.03em;}
+  p{margin:6px 0 0;font-family:'Nunito';font-size:13px;color:#c8b890;line-height:1.5;}
+  .oq{font-family:'Crimson Text';font-style:italic;font-size:15px;color:#c8b890;margin-top:8px;line-height:1.5;}
+  .tag{position:absolute;top:12px;right:12px;font-family:'Nunito';font-size:10px;font-weight:600;color:#c8a030;letter-spacing:0.1em;text-transform:uppercase;}
+</style></head>
+<body><div class="wrap">
+  <div class="card"><h3>The Knight</h3><p>Pemimpin yang gagah dalam medan. Kamu mengutamakan aksi, tanggung jawab, dan kekuatan tubuh.</p></div>
+  <div class="card selected"><span class="tag">✦ Terpilih</span><h3>The Scholar</h3><p>Pencari kebijaksanaan, penuntut ilmu sepanjang hayat. Buku adalah pedangmu.</p></div>
+  <div class="card oracle"><span class="tag" style="color:#a080d0">Cenayang</span><h3 style="color:#e8d4a0">Ramalan</h3><div class="oq">"Bintangmu berpihak pada api. Perjalananmu akan panjang..."</div></div>
+  <div class="card"><h3 style="color:#887870">Locked</h3><p style="color:#3a3450">Selesaikan bab sebelumnya untuk membuka.</p></div>
+</div></body></html>

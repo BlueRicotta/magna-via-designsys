@@ -1,0 +1,54 @@
+<svg width="400" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"></feGaussianBlur>
+      <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+    </filter>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="3.5" result="blur"></feGaussianBlur>
+      <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+    </filter>
+    <radialGradient id="bgGlow" cx="50%" cy="42%" r="40%">
+      <stop offset="0%" stop-color="#c8a030" stop-opacity="0.06"></stop>
+      <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+
+  
+  <rect width="400" height="220" fill="#0a0a14"></rect>
+  <rect width="400" height="220" fill="url(#bgGlow)"></rect>
+
+  
+  <circle cx="200" cy="88" r="64" fill="none" stroke="#1e1e34" stroke-width="1"></circle>
+  <circle cx="200" cy="88" r="59" fill="none" stroke="#c8a030" stroke-width="0.6" stroke-dasharray="3 6" opacity="0.45"></circle>
+
+  
+  <line x1="200" y1="40" x2="166" y2="100" stroke="#c8a030" stroke-width="1.2" opacity="0.65"></line>
+  <line x1="200" y1="40" x2="234" y2="100" stroke="#c8a030" stroke-width="1.2" opacity="0.65"></line>
+  <line x1="166" y1="100" x2="182" y2="80" stroke="#c8a030" stroke-width="1.2" opacity="0.65"></line>
+  <line x1="234" y1="100" x2="218" y2="80" stroke="#c8a030" stroke-width="1.2" opacity="0.65"></line>
+  <line x1="182" y1="80" x2="218" y2="80" stroke="#c8a030" stroke-width="1.2" opacity="0.65"></line>
+  <line x1="182" y1="80" x2="200" y2="124" stroke="#c8a030" stroke-width="1.2" opacity="0.65"></line>
+  <line x1="218" y1="80" x2="200" y2="124" stroke="#c8a030" stroke-width="1.2" opacity="0.65"></line>
+
+  
+  <circle cx="166" cy="100" r="3.5" fill="#c8a030" filter="url(#glow)"></circle>
+  <circle cx="234" cy="100" r="3.5" fill="#c8a030" filter="url(#glow)"></circle>
+  <circle cx="182" cy="80" r="2.8" fill="#c8a030" filter="url(#glow)"></circle>
+  <circle cx="218" cy="80" r="2.8" fill="#c8a030" filter="url(#glow)"></circle>
+  <circle cx="200" cy="124" r="3.5" fill="#c8a030" filter="url(#glow)"></circle>
+
+  
+  <path d="M197 38 L200 30 L203 38 L211 42 L203 46 L200 54 L197 46 L189 42 Z" fill="#e8d090" filter="url(#starGlow)"></path>
+
+  
+  <text x="200" y="162" font-family="&#39;Cinzel&#39;, Georgia, &#39;Times New Roman&#39;, serif" font-size="24" font-weight="700" fill="#c8a030" text-anchor="middle" letter-spacing="8">MAGNA VIA</text>
+
+  
+  <line x1="108" y1="170" x2="156" y2="170" stroke="#c8a030" stroke-width="0.7" opacity="0.4"></line>
+  <line x1="244" y1="170" x2="292" y2="170" stroke="#c8a030" stroke-width="0.7" opacity="0.4"></line>
+
+  
+  <text x="200" y="188" font-family="&#39;Crimson Text&#39;, Georgia, &#39;Times New Roman&#39;, serif" font-size="12" font-style="italic" fill="#887870" text-anchor="middle" letter-spacing="3">Temukan Jalanmu</text>
+</svg>

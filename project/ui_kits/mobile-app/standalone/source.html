@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Magna Via — Responsive Showcase</title>
+
+<!-- Dynamic resources referenced by template-string in JSX (not discoverable from attrs). -->
+<meta name="ext-resource-dependency" content="assets/questions/1.png"  data-resource-id="question1" />
+<meta name="ext-resource-dependency" content="assets/questions/2.png"  data-resource-id="question2" />
+<meta name="ext-resource-dependency" content="assets/questions/3.png"  data-resource-id="question3" />
+<meta name="ext-resource-dependency" content="assets/questions/4.png"  data-resource-id="question4" />
+<meta name="ext-resource-dependency" content="assets/questions/5.png"  data-resource-id="question5" />
+<meta name="ext-resource-dependency" content="assets/questions/6.png"  data-resource-id="question6" />
+<meta name="ext-resource-dependency" content="assets/questions/7.png"  data-resource-id="question7" />
+<meta name="ext-resource-dependency" content="assets/questions/8.png"  data-resource-id="question8" />
+<meta name="ext-resource-dependency" content="assets/questions/9.png"  data-resource-id="question9" />
+<meta name="ext-resource-dependency" content="assets/questions/10.png" data-resource-id="question10" />
+<meta name="ext-resource-dependency" content="assets/questions/11.png" data-resource-id="question11" />
+<meta name="ext-resource-dependency" content="assets/questions/12.png" data-resource-id="question12" />
+<meta name="ext-resource-dependency" content="assets/questions/13.png" data-resource-id="question13" />
+<meta name="ext-resource-dependency" content="assets/questions/14.png" data-resource-id="question14" />
+<meta name="ext-resource-dependency" content="assets/questions/15.png" data-resource-id="question15" />
+
+<meta name="ext-resource-dependency" content="assets/hobbies/fighter.png"           data-resource-id="hobby_fighter" />
+<meta name="ext-resource-dependency" content="assets/hobbies/scholar.png"           data-resource-id="hobby_scholar" />
+<meta name="ext-resource-dependency" content="assets/hobbies/artist.png"            data-resource-id="hobby_artist" />
+<meta name="ext-resource-dependency" content="assets/hobbies/guardians-lantern.png" data-resource-id="hobby_guardian" />
+<meta name="ext-resource-dependency" content="assets/hobbies/leaders-crown.png"     data-resource-id="hobby_leader" />
+<meta name="ext-resource-dependency" content="assets/hobbies/keepers-codex.png"     data-resource-id="hobby_keeper" />
+
+<meta name="ext-resource-dependency" content="assets/birth-stars/ignis.png"  data-resource-id="star_ignis" />
+<meta name="ext-resource-dependency" content="assets/birth-stars/aqua.png"   data-resource-id="star_aqua" />
+<meta name="ext-resource-dependency" content="assets/birth-stars/terra.png"  data-resource-id="star_terra" />
+<meta name="ext-resource-dependency" content="assets/birth-stars/ventus.png" data-resource-id="star_ventus" />
+
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0a0a14; font-family: 'Nunito', sans-serif; color: #e8e0d0; }
+  html, body { min-height: 100vh; overflow-x: hidden; }
+  button { font-family: inherit; }
+  #root { min-height: 100vh; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .mv-nav-pill:hover {
+      background: rgba(200,160,48,0.18) !important;
+      color: #e8d090 !important;
+      border-color: #c8a030 !important;
+      box-shadow: 0 0 18px rgba(200,160,48,0.3) !important;
+      transform: translateY(-1px);
+    }
+    .mv-nav-pill[data-active="true"]:hover {
+      box-shadow: 0 0 24px rgba(200,160,48,0.45) !important;
+    }
+  }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Splash thumbnail: Magna Via constellation star on Kingdom Night -->
+<template id="__bundler_thumbnail" data-bg-color="#0a0a14">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c8a030" stop-opacity="0.35"/>
+        <stop offset="60%" stop-color="#c8a030" stop-opacity="0.08"/>
+        <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <!-- soft gold aura -->
+    <circle cx="600" cy="400" r="380" fill="url(#glow)"/>
+    <!-- 8-pointed star -->
+    <g transform="translate(600 400)" fill="#c8a030">
+      <path d="M 0 -180 L 24 -24 L 180 0 L 24 24 L 0 180 L -24 24 L -180 0 L -24 -24 Z"
+            stroke="#e8d090" stroke-width="2"/>
+      <path d="M 0 -110 L 110 0 L 0 110 L -110 0 Z" fill="#e8d090" opacity="0.55"/>
+    </g>
+    <!-- constellation dots -->
+    <g fill="#e8d090">
+      <circle cx="220" cy="180" r="4"/>
+      <circle cx="340" cy="120" r="3"/>
+      <circle cx="460" cy="220" r="3.5"/>
+      <circle cx="880" cy="180" r="3"/>
+      <circle cx="960" cy="260" r="4"/>
+      <circle cx="1040" cy="140" r="3"/>
+      <circle cx="200" cy="620" r="3.5"/>
+      <circle cx="320" cy="680" r="3"/>
+      <circle cx="820" cy="640" r="4"/>
+      <circle cx="940" cy="700" r="3"/>
+    </g>
+  </svg>
+</template>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="PhoneFrame.jsx"></script>
+<script type="text/babel" src="Primitives.jsx"></script>
+<script type="text/babel" src="ScreenTransitions.jsx"></script>
+<script type="text/babel" src="Splash.jsx"></script>
+<script type="text/babel" src="OracleIntro.jsx"></script>
+<script type="text/babel" src="Biodata.jsx"></script>
+<script type="text/babel" src="BirthStarSelect.jsx"></script>
+<script type="text/babel" src="HobbyCards.jsx"></script>
+<script type="text/babel" src="QuizScenario.jsx"></script>
+<script type="text/babel" src="ResultReveal.jsx"></script>
+<script type="text/babel" src="ClassResult.jsx"></script>
+<script type="text/babel" src="CenayangChat.jsx"></script>
+<script type="text/babel" src="ResponsiveShell.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Magna Via — Mobile UI Kit (Print)</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  @page { size: A4 portrait; margin: 1cm; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    color: #1a0e00;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  button { font-family: inherit; }
+  #root { min-height: 100vh; }
+
+  .print-cover {
+    page-break-after: always;
+    break-after: page;
+    padding: 40px 40px 20px;
+    color: #1a0e00;
+    background: #ffffff;
+  }
+  .print-cover h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.08em;
+    color: #5a3a1a;
+    margin: 0 0 6px;
+  }
+  .print-cover .kicker {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: #887870;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .print-cover p {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #3a3450;
+    max-width: 520px;
+    line-height: 1.55;
+  }
+  .print-cover .rule {
+    width: 120px; height: 1px;
+    background: linear-gradient(90deg, rgba(200,160,48,1), rgba(200,160,48,0));
+    margin: 18px 0;
+  }
+  .print-cover ol {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    color: #3a3450;
+    line-height: 1.9;
+    padding-left: 18px;
+  }
+
+  .screens-print {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    background: #ffffff;
+  }
+  .screen-page {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-before: page;
+    page-break-before: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 16px;
+  }
+  .screen-page:first-child {
+    break-before: auto;
+    page-break-before: auto;
+  }
+  .screen-caption {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #5a3a1a;
+    margin-bottom: 4px;
+  }
+  .screen-sub {
+    font-family: 'Nunito', sans-serif;
+    font-size: 10.5px;
+    color: #887870;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  @media print {
+    html, body { background: #ffffff; }
+    .print-cover { padding: 20px; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="print-cover">
+  <div class="kicker">Magna Via · Mobile UI Kit</div>
+  <h1>Ringkasan Alur Pengguna</h1>
+  <div class="rule"></div>
+  <p>Sembilan layar inti dari perjalanan pengguna Magna Via — dari pembukaan narasi hingga konsultasi akhir bersama Cenayang. Setiap layar mencerminkan estetika tarot-RPG berlatar malam berbintang Arcadia.</p>
+  <ol>
+    <li>Splash — gerbang Arcadia</li>
+    <li>Opening Narrative — Oracle memperkenalkan dunia</li>
+    <li>Biodata Form — pendaftaran ke Dewan Kerajaan</li>
+    <li>Hobby Card Selection — pilih tiga jalur</li>
+    <li>Birth Star Selection — pilih elemenmu</li>
+    <li>Quiz Scenario — skenario cerita pilihan</li>
+    <li>Result Reveal — transisi seremonial</li>
+    <li>Result — pengungkapan kelas karakter</li>
+    <li>Cenayang Chat — konsultasi bersama Oracle</li>
+  </ol>
+</div>
+
+<div id="root" class="screens-print"></div>
+
+<!-- Load shared components -->
+<script type="text/babel" src="PhoneFrame.jsx"></script>
+<script type="text/babel" src="Primitives.jsx"></script>
+<script type="text/babel" src="Splash.jsx"></script>
+<script type="text/babel" src="OracleIntro.jsx"></script>
+<script type="text/babel" src="Biodata.jsx"></script>
+<script type="text/babel" src="BirthStarSelect.jsx"></script>
+<script type="text/babel" src="HobbyCards.jsx"></script>
+<script type="text/babel" src="QuizScenario.jsx"></script>
+<script type="text/babel" src="ResultReveal.jsx"></script>
+<script type="text/babel" src="ClassResult.jsx"></script>
+<script type="text/babel" src="CenayangChat.jsx"></script>
+
+<script type="text/babel">
+function PrintApp() {
+  const noop = () => {};
+  const screens = [
+    { id: 'splash',   label: '01 · Splash',            sub: 'Gerbang Arcadia',              el: <Splash onBegin={noop} /> },
+    { id: 'oracle',   label: '02 · Opening Narrative', sub: 'Oracle memperkenalkan dunia',  el: <OracleIntro onBack={noop} onAdvance={noop} /> },
+    { id: 'biodata',  label: '03 · Biodata Form',      sub: 'Pendaftaran ke Dewan',         el: <Biodata onBack={noop} onAdvance={noop} /> },
+    { id: 'hobbies',  label: '04 · Hobby Cards',       sub: 'Pilih jalurmu',                el: <HobbyCards onBack={noop} onAdvance={noop} /> },
+    { id: 'stars',    label: '05 · Birth Star',        sub: 'Pilih elemenmu',               el: <BirthStarSelect onBack={noop} onAdvance={noop} /> },
+    { id: 'quiz',     label: '06 · Quiz Scenario',     sub: 'Skenario 1 · Persimpangan Jalan', el: <QuizScenario scenarioIndex={0} onBack={noop} onAdvance={noop} /> },
+    { id: 'reveal',   label: '07 · Result Reveal',     sub: 'Takdirmu sedang terungkap',    el: <ResultReveal onAdvance={noop} /> },
+    { id: 'result',   label: '08 · Result',            sub: 'Bintang telah berbicara',      el: <ClassResult onBack={noop} onRestart={noop} onConsult={noop} /> },
+    { id: 'chat',     label: '09 · Cenayang Chat',     sub: 'Konsultasi bersama Oracle',    el: <CenayangChat onBack={noop} /> },
+  ];
+  return (
+    <>
+      {screens.map(s => (
+        <div key={s.id} className="screen-page">
+          <div className="screen-caption">{s.label}</div>
+          <div className="screen-sub">{s.sub}</div>
+          <PhoneFrame>{s.el}</PhoneFrame>
+        </div>
+      ))}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<PrintApp />);
+
+// Auto-print once fonts + images settle
+(async () => {
+  try { await document.fonts.ready; } catch (e) {}
+  await new Promise(r => setTimeout(r, 1500));
+  const imgs = [...document.images];
+  await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(res => {
+    img.addEventListener('load', res, { once: true });
+    img.addEventListener('error', res, { once: true });
+  })));
+  await new Promise(r => setTimeout(r, 500));
+  window.print();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Magna Via — Responsive Showcase (Print)</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #2a2a30;
+    font-family: 'Nunito', sans-serif;
+    color: #e8e0d0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  button { font-family: inherit; pointer-events: none; }
+
+  /* ─── Screen (preview) styles ─── */
+  .screen-only { padding: 40px; }
+  .page {
+    background: #0a0a14;
+    margin: 0 auto 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page-label {
+    position: absolute; top: 10px; left: 14px; z-index: 9999;
+    font-family: 'Nunito', sans-serif; font-size: 9px; font-weight: 700;
+    color: rgba(232,224,208,0.45); letter-spacing: '0.2em';
+    text-transform: uppercase;
+    background: rgba(10,10,20,0.6); padding: 4px 8px; border-radius: 4px;
+  }
+
+  /* Artboard shells — each page holds one artboard scaled to fit the printed page.
+     Design dims:  phone 395×832 · tablet 1024×1366 · desktop 1440×900.
+     The inner div renders at full design size; CSS scales it. */
+  .fit {
+    transform-origin: top left;
+    position: absolute; top: 0; left: 0;
+  }
+
+  /* ─── Print — landscape A4, one artboard per page, letterboxed with black ─── */
+  @media print {
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+    html, body {
+      background: #0a0a14 !important;
+      margin: 0 !important; padding: 0 !important;
+    }
+    .screen-only { padding: 0 !important; }
+    .page {
+      margin: 0 !important;
+      box-shadow: none !important;
+      page-break-after: always;
+      break-after: page;
+      break-inside: avoid;
+      width: 297mm !important;
+      height: 209.9mm !important;  /* slightly less than 210 to avoid blank extra page */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+    .page-label { display: none; }
+    .fit {
+      position: relative !important;
+      top: auto !important; left: auto !important;
+    }
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Mobile screens -->
+<script type="text/babel" src="PhoneFrame.jsx"></script>
+<script type="text/babel" src="Primitives.jsx"></script>
+<script type="text/babel" src="ScreenTransitions.jsx"></script>
+<script type="text/babel" src="Splash.jsx"></script>
+<script type="text/babel" src="OracleIntro.jsx"></script>
+<script type="text/babel" src="Biodata.jsx"></script>
+<script type="text/babel" src="BirthStarSelect.jsx"></script>
+<script type="text/babel" src="HobbyCards.jsx"></script>
+<script type="text/babel" src="QuizScenario.jsx"></script>
+<script type="text/babel" src="ResultReveal.jsx"></script>
+<script type="text/babel" src="ClassResult.jsx"></script>
+<script type="text/babel" src="CenayangChat.jsx"></script>
+
+<!-- Shared -->
+<script type="text/babel" src="ChatBubble.jsx"></script>
+
+<!-- Tablet + desktop -->
+<script type="text/babel" src="TabletScreens.jsx"></script>
+<script type="text/babel" src="TabletScreensExtra.jsx"></script>
+<script type="text/babel" src="DesktopScreens.jsx"></script>
+<script type="text/babel" src="DesktopScreensExtra.jsx"></script>
+
+<script type="text/babel">
+// Landscape A4 at 96dpi is ~1123 × 794.  We scale each artboard to fit
+// within that box while preserving aspect ratio; letterboxing handled by
+// the flex-centered .page container on print.
+
+// On-screen preview uses the same scaled sizes so what you see ≈ what prints.
+
+const PAGE_W = 1123;   // landscape A4 content width  (297mm × 3.78 px/mm)
+const PAGE_H = 794;    // landscape A4 content height (210mm)
+
+function scaleFor(w, h) {
+  const s = Math.min(PAGE_W / w, PAGE_H / h);
+  return {
+    scale: s,
+    pageW: Math.round(w * s),
+    pageH: Math.round(h * s),
+  };
+}
+
+function PhonePage({ screen, label }) {
+  // Use PhoneFrame so bezel is shown. The frame is 395×832.
+  const W = 395, H = 832;
+  const { scale, pageW, pageH } = scaleFor(W, H);
+  const screens = {
+    splash:  <Splash onBegin={() => {}} />,
+    oracle:  <OracleIntro onBack={() => {}} onAdvance={() => {}} />,
+    biodata: <Biodata onBack={() => {}} onAdvance={() => {}} />,
+    stars:   <BirthStarSelect onBack={() => {}} onAdvance={() => {}} />,
+    hobbies: <HobbyCards onBack={() => {}} onAdvance={() => {}} />,
+    quiz:    <QuizScenario onBack={() => {}} onAdvance={() => {}} />,
+    result:  <ClassResult onBack={() => {}} onConsult={() => {}} onRestart={() => {}} />,
+    chat:    <CenayangChat onBack={() => {}} />,
+  };
+  return (
+    <div className="page" style={{ width: pageW, height: pageH }}>
+      <div className="page-label">{label} · MOBILE</div>
+      <div className="fit" style={{
+        width: W, height: H, transform: `scale(${scale})`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <PhoneFrame>{screens[screen]}</PhoneFrame>
+      </div>
+    </div>
+  );
+}
+
+function TabletPage({ screen, label }) {
+  const W = 1024, H = 1366;
+  const { scale, pageW, pageH } = scaleFor(W, H);
+  let content = <TabletBirthStar onBack={() => {}} onAdvance={() => {}} />;
+  switch (screen) {
+    case 'splash':  content = <TabletSplash onBegin={() => {}} />; break;
+    case 'oracle':  content = <TabletOracle onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'biodata': content = <TabletBiodata onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'hobbies': content = <TabletHobbyCards onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'quiz':    content = <TabletQuiz onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'result':  content = <TabletClassResult onBack={() => {}} onConsult={() => {}} onRestart={() => {}} />; break;
+    case 'chat':    content = <TabletChat onBack={() => {}} />; break;
+  }
+  return (
+    <div className="page" style={{ width: pageW, height: pageH }}>
+      <div className="page-label">{label} · TABLET · 1024 × 1366</div>
+      <div className="fit" style={{ width: W, height: H, transform: `scale(${scale})` }}>
+        {content}
+      </div>
+    </div>
+  );
+}
+
+function DesktopPage({ screen, label }) {
+  const W = 1440, H = 900;
+  const { scale, pageW, pageH } = scaleFor(W, H);
+  let content = <DesktopBirthStar onBack={() => {}} onAdvance={() => {}} />;
+  switch (screen) {
+    case 'splash':  content = <DesktopSplash onBegin={() => {}} />; break;
+    case 'oracle':  content = <DesktopOracle onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'biodata': content = <DesktopBiodata onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'hobbies': content = <DesktopHobbyCards onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'quiz':    content = <DesktopQuiz onBack={() => {}} onAdvance={() => {}} />; break;
+    case 'result':  content = <DesktopClassResult onBack={() => {}} onConsult={() => {}} onRestart={() => {}} />; break;
+    case 'chat':    content = <DesktopChat onBack={() => {}} />; break;
+  }
+  return (
+    <div className="page" style={{ width: pageW, height: pageH }}>
+      <div className="page-label">{label} · DESKTOP · 1440 × 900</div>
+      <div className="fit" style={{ width: W, height: H, transform: `scale(${scale})` }}>
+        {content}
+      </div>
+    </div>
+  );
+}
+
+function CoverPage() {
+  return (
+    <div className="page" style={{
+      width: PAGE_W, height: PAGE_H,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: '#0a0a14',
+      position: 'relative',
+    }}>
+      <svg viewBox={`0 0 ${PAGE_W} ${PAGE_H}`} preserveAspectRatio="none"
+           style={{ position: 'absolute', inset: 0, opacity: 0.55 }}>
+        {Array.from({ length: 90 }).map((_, i) => {
+          const seed = i * 9301 + 49297;
+          const x = (seed * 131) % PAGE_W;
+          const y = (seed * 257) % PAGE_H;
+          const r = 0.6 + ((seed * 53) % 100) / 100 * 1.3;
+          const o = 0.15 + ((seed * 37) % 100) / 100 * 0.5;
+          return <circle key={i} cx={x} cy={y} r={r} fill="#e8d090" opacity={o} />;
+        })}
+      </svg>
+      <div style={{
+        textAlign: 'center', position: 'relative', zIndex: 2,
+      }}>
+        <div style={{
+          fontFamily: "'Cinzel', serif", fontWeight: 700, color: '#c8a030',
+          letterSpacing: '0.5em', textTransform: 'uppercase', fontSize: 14, marginBottom: 24,
+          textShadow: '0 0 20px rgba(200,160,48,0.4)',
+        }}>✦  Magna Via  ✦</div>
+        <div style={{
+          fontFamily: "'Cinzel', serif", fontWeight: 700, fontSize: 64,
+          color: '#e8e0d0', letterSpacing: '0.06em', lineHeight: 1.05, marginBottom: 22,
+        }}>Responsive<br/>Showcase</div>
+        <div style={{
+          fontFamily: "'Crimson Text', serif", fontStyle: 'italic', fontSize: 22,
+          color: '#a090d0', marginBottom: 40, maxWidth: 620, margin: '0 auto 40px',
+          padding: '0 40px',
+        }}>Selamat datang, Pejuang. Tiga breakpoint, delapan layar, satu perjalanan di antara bintang-bintang.</div>
+        <div style={{
+          display: 'inline-flex', gap: 32, padding: '16px 32px',
+          border: '0.5px solid rgba(200,160,48,0.35)', borderRadius: 999,
+          fontFamily: "'Cinzel', serif", fontSize: 11, fontWeight: 700,
+          color: '#c8a030', letterSpacing: '0.22em', textTransform: 'uppercase',
+        }}>
+          <span>📱 Mobile · 375</span>
+          <span style={{ color: 'rgba(200,160,48,0.35)' }}>·</span>
+          <span>📲 Tablet · 1024</span>
+          <span style={{ color: 'rgba(200,160,48,0.35)' }}>·</span>
+          <span>🖥 Desktop · 1440</span>
+        </div>
+        <div style={{
+          marginTop: 60, fontFamily: "'Nunito', sans-serif", fontSize: 10, fontWeight: 600,
+          color: '#887870', letterSpacing: '0.34em', textTransform: 'uppercase',
+        }}>24 halaman · 3 breakpoint × 8 layar</div>
+      </div>
+    </div>
+  );
+}
+
+const SCREEN_ORDER = [
+  { id: 'splash',  label: '01 · Splash' },
+  { id: 'oracle',  label: '02 · Oracle Intro' },
+  { id: 'biodata', label: '03 · Biodata' },
+  { id: 'stars',   label: '04 · Birth Star' },
+  { id: 'hobbies', label: '05 · Hobby Cards' },
+  { id: 'quiz',    label: '06 · Quiz Scenario' },
+  { id: 'result',  label: '07 · Class Result' },
+  { id: 'chat',    label: '08 · Cenayang Chat' },
+];
+
+function PrintApp() {
+  return (
+    <div className="screen-only">
+      <CoverPage />
+      {SCREEN_ORDER.map(s => (
+        <React.Fragment key={s.id}>
+          <PhonePage   screen={s.id} label={s.label} />
+          <TabletPage  screen={s.id} label={s.label} />
+          <DesktopPage screen={s.id} label={s.label} />
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<PrintApp />);
+
+// ─── Auto-print: wait for fonts, images, and React render to settle ───
+(async () => {
+  // Wait for Babel-transformed JSX above to fully render.
+  await new Promise(r => setTimeout(r, 100));
+  // Wait for fonts.
+  if (document.fonts && document.fonts.ready) {
+    try { await document.fonts.ready; } catch (e) {}
+  }
+  // Wait for every image to load (or fail).
+  const imgs = Array.from(document.images || []);
+  await Promise.all(imgs.map(img => {
+    if (img.complete) return Promise.resolve();
+    return new Promise(res => {
+      img.addEventListener('load', res, { once: true });
+      img.addEventListener('error', res, { once: true });
+    });
+  }));
+  // Small settle delay, then print.
+  await new Promise(r => setTimeout(r, 800));
+  window.print();
+})();
+</script>
+</body>
+</html>

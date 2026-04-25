@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Magna Via — Responsive Showcase</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0a0a14; font-family: 'Nunito', sans-serif; color: #e8e0d0; }
+  html, body { min-height: 100vh; overflow-x: hidden; }
+  button { font-family: inherit; }
+  #root { min-height: 100vh; }
+
+  /* Hover states — apply only where a cursor is available. */
+  @media (hover: hover) and (pointer: fine) {
+    .mv-nav-pill:hover {
+      background: rgba(200,160,48,0.18) !important;
+      color: #e8d090 !important;
+      border-color: #c8a030 !important;
+      box-shadow: 0 0 18px rgba(200,160,48,0.3) !important;
+      transform: translateY(-1px);
+    }
+    .mv-nav-pill[data-active="true"]:hover {
+      box-shadow: 0 0 24px rgba(200,160,48,0.45) !important;
+    }
+  }
+
+  /* Keep the mobile-app prototype portrait. If someone rotates iPad, we show
+     a graceful lock notice instead of a broken landscape layout.
+     (Phone devices skip this because their viewport can't become landscape
+     wide enough to trigger the >= 641 tablet breakpoint here.) */
+  @media (min-width: 641px) and (max-width: 1023px) and (orientation: landscape) {
+    body::after {
+      content: "";
+    }
+  }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="PhoneFrame.jsx"></script>
+<script type="text/babel" src="Primitives.jsx"></script>
+<script type="text/babel" src="ScreenTransitions.jsx"></script>
+<script type="text/babel" src="Splash.jsx"></script>
+<script type="text/babel" src="OracleIntro.jsx"></script>
+<script type="text/babel" src="Biodata.jsx"></script>
+<script type="text/babel" src="BirthStarSelect.jsx"></script>
+<script type="text/babel" src="HobbyCards.jsx"></script>
+<script type="text/babel" src="QuizScenario.jsx"></script>
+<script type="text/babel" src="ResultReveal.jsx"></script>
+<script type="text/babel" src="ClassResult.jsx"></script>
+<script type="text/babel" src="CenayangChat.jsx"></script>
+<script type="text/babel" src="ResponsiveShell.jsx"></script>
+</body>
+</html>

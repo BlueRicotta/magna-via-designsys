@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Magna Via · Buttons</title>
+<style>/* mv-responsive */
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{overflow-x:hidden;}
+  img,svg{max-width:100%;height:auto;}
+
+  html,body{margin:0;background:#0a0a14;color:#e8e0d0;font-family:'Nunito';}
+  .wrap{padding:22px;display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:14px;align-items:center;}
+  .col{display:flex;flex-direction:column;align-items:stretch;gap:8px;}
+  .cap{font-family:'Nunito';font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#887870;}
+  .btn{font-family:'Cinzel';font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;}
+  .primary{background:#c8a030;color:#1a0e00;box-shadow:inset 0 0 0 0.5px rgba(232,208,144,.5), 0 0 16px rgba(200,160,48,.25);}
+  .primary-press{background:#8a6e20;color:#1a0e00;transform:scale(.97);}
+  .primary-disabled{background:rgba(200,160,48,.35);color:rgba(26,14,0,.6);box-shadow:none;}
+  .secondary{background:transparent;color:#c8a030;border:0.5px solid #c8a030;}
+</style></head>
+<body><div class="wrap">
+  <div class="col"><div class="cap">Primary</div><button class="btn primary">Mulai Perjalanan</button></div>
+  <div class="col"><div class="cap">Pressed</div><button class="btn primary-press">Mulai Perjalanan</button></div>
+  <div class="col"><div class="cap">Disabled</div><button class="btn primary-disabled">Mulai Perjalanan</button></div>
+  <div class="col"><div class="cap">Secondary</div><button class="btn secondary">Kembali</button></div>
+  <div class="col"><div class="cap">Secondary · Hover</div><button class="btn secondary" style="background:rgba(200,160,48,.1);">Kembali</button></div>
+  <div class="col"><div class="cap">Ghost</div><button class="btn" style="background:transparent;color:#c8b890;">Lewati</button></div>
+</div></body></html>

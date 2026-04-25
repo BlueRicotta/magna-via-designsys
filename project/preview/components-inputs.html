@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Magna Via · Form Inputs</title>
+<style>/* mv-responsive */
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{overflow-x:hidden;}
+  img,svg{max-width:100%;height:auto;}
+
+  html,body{margin:0;background:#0a0a14;color:#e8e0d0;font-family:'Nunito';}
+  .wrap{padding:22px;display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  label{font-family:'Nunito';font-size:12px;font-weight:600;color:#c8b890;letter-spacing:0.04em;}
+  input{background:#0e0e1a;border:0.5px solid #2a2a40;border-radius:8px;height:44px;padding:0 14px;color:#e8e0d0;font-family:'Nunito';font-size:15px;outline:none;}
+  input::placeholder{color:#3a3450;}
+  .focus{border-color:#c8a030;box-shadow:0 0 10px rgba(200,160,48,.25);}
+  .error{border-color:#c83020;}
+  .hint{font-family:'Nunito';font-size:11px;color:#887870;}
+  .err{color:#e86050;}
+</style></head>
+<body><div class="wrap">
+  <div class="field"><label>Nama Lengkap</label><input placeholder="Masukkan namamu"><div class="hint">Default · hairline border</div></div>
+  <div class="field"><label style="color:#c8a030">Asal Sekolah</label><input class="focus" value="SMA Negeri 3 Yogyakarta"><div class="hint" style="color:#c8a030">Focused · gold glow</div></div>
+  <div class="field"><label>Email</label><input value="andi@example.com"><div class="hint">Filled</div></div>
+  <div class="field"><label style="color:#e86050">Kelas</label><input class="error" value="" placeholder="Pilih kelas"><div class="hint err">Kolom ini wajib diisi.</div></div>
+</div></body></html>
